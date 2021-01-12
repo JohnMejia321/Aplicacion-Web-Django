@@ -15,10 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
 
-
+#aca se agregan las url del aplicativo
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('ProyectoWebApp.urls')),
+    path('servicios/',include('Servicios.urls')),
+
+    
     
 ]
+
+#Para mostrar las imagenes que se guardan en la tabla servicios ,de la aplicacion servicios
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
